@@ -92,31 +92,35 @@
 					<h3 id="form-title">List of Employees</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<table  cellpadding="2" cellspacing="2" border="3" >
-                        <tr>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>email</td>
-                        <td>age</td>
-                        <td>sex</td>
-                        </tr>
-                        
-                    
-                    
-                    {% for student in dat %}
-                    
-                    <tr>
-                        <td>{{ student.fname}}</td>
-                        <td>{{ student.lname }}</td>
-                        <td>{{ student.email }}</td>
-                        <td>{{ student.age }}</td>
-                        <td>{{ student.sex }}</td>
-                        </tr>
-                        
-                        
-                    {% endfor %}
-                    
-                    </table>
+					
+						<table  cellpadding="2" cellspacing="2" border="3" >
+							<tr>
+							<td>User Name</td>
+							<td>First Name</td>
+							<td>Last Name</td>
+							<td>email</td>
+							<td>age</td>
+							<td>sex</td>
+							</tr>
+							
+						
+						
+						{% for employee in dat %}
+						
+						<tr>
+							<td>{{ employee.username}}</td>
+							<td>{{ employee.firstname}}</td>
+							<td>{{ employee.lastname }}</td>
+							<td>{{ employee.email }}</td>
+							<td>{{ employee.age }}</td>
+							<td>{{ employee.sex }}</td>
+							</tr>
+							
+							
+						{% endfor %}
+						
+						</table>
+
 
 				</div>
 		

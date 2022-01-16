@@ -18,7 +18,11 @@ class Employee(models.Model):
 
 
 class Attendance(models.Model):
-    username=models.CharField(max_length=100,unique=True)
+    username=models.CharField(max_length=100)
+    dat=models.CharField(max_length=100)
     pday = models.DateTimeField(default=timezone.now)
-    
-    
+
+  
+class Salary(models.Model):
+    username=models.CharField(max_length=100)
+    paidmonth=models.CharField(max_length=100)

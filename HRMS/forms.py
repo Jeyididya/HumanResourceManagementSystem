@@ -11,4 +11,4 @@ class EmployeeForm(forms.ModelForm):
 class AttendanceForm(forms.ModelForm):
     class Meta:
         model=Attendance
-        fields=['username']
+        fields=['username','dat']

@@ -8,7 +8,7 @@ from .forms import EmployeeForm, AttendanceForm
 from datetime import date
 
 
-atte=[]
+atte=[] #to check for duplicated attendance
 
 
 #######################################
@@ -16,7 +16,11 @@ atte=[]
 import socket
 import sys
 
-HOST = '10.240.212.95'	# Symbolic name, meaning all available interfaces
+hostname = socket.gethostname()
+
+HOST =socket.gethostbyname(hostname)
+
+print("HOST:",HOST)	# Symbolic name, meaning all available interfaces
 PORT = 7800	# Arbitrary non-privileged port
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,7 +30,7 @@ print ('Socket created')
 try:
 	s.bind((HOST, PORT))
 except socket.error as msg:
-	print ('Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1])
+	print ('Bind failed. Error Code : ')
 	sys.exit()
 	
 print ('Socket bind complete')
@@ -57,7 +61,7 @@ def retnam():
 
 
 admin="001"
-
+gname=""
 # Create your views here.
 def home(request):
     return render (request,'Hrms/index.html')
@@ -101,16 +105,49 @@ def adminpage(request):
 def userspage(request):
     return render (request,'Hrms/userspage.html')
 def salary(request):
+    if request.method=="POST": 
+        given_month=request.POST['month']
+        ot=request.POST['ot']
+        all_sal={}
+        
+        for emp in Employee.objects.all():
+            all_sal[emp.username]=emp.salary
+        print(all_sal,"====---000000000")
+        all_={}
+        
+        
+        print("##########################################")
+        for em in Attendance.objects.all():
+            i=em.dat.split("+")
+            name=i[0]
+            
+            dat=i[1].split('/')[0]
+            month=i[1].split('/')[1]
+    
+            if int(month)==int(given_month):
+                if name in all_:
+                    all_[name]=all_[name]+1
+                else:
+                    all_[name]=1
+        print(all_)
+            
+
+        print("##########################################")
+        
+        
+        
+   
+    
     return render (request,'Hrms/salary.html')
 def viewemployees(request):
-    data = Employees.objects.all
+    data = Employee.objects.all
     stu = {
         "dat": data
     }
     return render(request,"Hrms/viewemployees.html", stu)
 def attendance(request):
     today = date.today()
-    # dd/mm/YY
+
     d1 = today.strftime("%d/%m/%Y")
     if request.method=="POST":
         print("started============================")
@@ -126,7 +163,9 @@ def attendance(request):
     #return render (request,'Hrms/attendance.html')
 
 def confirmattendance(request):
+    
     if request.method=="POST":
+        
         form1=AttendanceForm(request.POST or None)
         if form1.is_valid():
             print("valid form")
@@ -150,7 +189,7 @@ def confirmattendance(request):
 def editacc(request):
     return render (request,'Hrms/editacc.html')
 def logged(request):
-    
+    global gname
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
@@ -159,11 +198,12 @@ def logged(request):
         if user is not None:
             login(request,user)
             n={'name':username}
+            gname=username
             if username==admin:
                 return redirect('adminpage')
             else:
                 print('sertual eko############################33')
-                return redirect('userspage')
+                return render (request,'Hrms/userspage.html',n)
             
         
         else:

@@ -10,7 +10,6 @@ urlpatterns = [
     path('adminpage',views.adminpage,name='adminpage'),
     path('userspage',views.userspage,name='userspage'),
     path('attendance',views.attendance,name='attendance'),
-    path('attendance',views.attendance,name='attendance'),
     path('editacc',views.editacc,name='editacc'),
     path('viewemployees',views.viewemployees,name='viewemployees'),
     path('confirmattendance',views.confirmattendance,name='confirmattendance'),
