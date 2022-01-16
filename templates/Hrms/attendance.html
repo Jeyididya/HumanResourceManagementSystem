@@ -4,21 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Document</title>
 </head>
 <body>
-    <p>welcome
-    </p>
-    
-	{% for message in messages%}
-	<strong>message: {{message}}</strong>
-	{% endfor %}
-    <p>kjhkjhkjhkjh</p>
-    {% if user.is_authenticated %}
-    <h3>hi</h3>
-    {%endif%}
-    <p>hello hello</p>
-        
+    <p>attendance</p>
+{{dat}}
+    <p>
+{% for student in dat %}
+    {{ student.fname}}
+    {{ student.lname }}
+{% endfor %}
+</p>
 </body>
 </html>

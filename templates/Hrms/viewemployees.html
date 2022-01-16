@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>List of employees</title>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -39,7 +39,7 @@
 		.form_container {
 			margin-top: 20px;
 		}
-
+        
 		#form-title{
 			color: #fff;
 			
@@ -89,28 +89,34 @@
 				<div class="d-flex justify-content-center">
 
 
-					<h3 id="form-title">LOGIN</h3>
+					<h3 id="form-title">List of Employees</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form method="POST" action="/logged">
-                        {%csrf_token%}
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="text" name="username" placeholder="Username..." class="form-control">
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-								<input type="password" name="password" placeholder="Password..." class="form-control" >
-						</div>
-
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<Button class="btn login_btn" type="submit">Sign in</Button>
-				   			</div>
-					</form>
+					<table  cellpadding="2" cellspacing="2" border="3" >
+                        <tr>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>email</td>
+                        <td>age</td>
+                        <td>sex</td>
+                        </tr>
+                        
+                    
+                    
+                    {% for student in dat %}
+                    
+                    <tr>
+                        <td>{{ student.fname}}</td>
+                        <td>{{ student.lname }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.sex }}</td>
+                        </tr>
+                        
+                        
+                    {% endfor %}
+                    
+                    </table>
 
 				</div>
 		

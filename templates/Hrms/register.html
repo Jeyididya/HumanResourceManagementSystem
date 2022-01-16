@@ -92,23 +92,52 @@
 					<h3 id="form-title">LOGIN</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form method="POST" action="/logged">
+					<form method="POST" action="/register">
                         {%csrf_token%}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
+								<span class="input-group-text"><i class="fas fa-user">First Name</i></span>
 							</div>
-							<input type="text" name="username" placeholder="Username..." class="form-control">
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-								<input type="password" name="password" placeholder="Password..." class="form-control" >
+							<input type="text" name="firstname" placeholder="first name" class="form-control">
 						</div>
 
+                        <div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">Last Name</i></span>
+							</div>
+							<input type="text" name="lastname" placeholder="last name" class="form-control">
+						</div>
+
+                        <div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">Email</i></span>
+							</div>
+							<input type="text" name="email" placeholder="example@something.com" class="form-control">
+						</div>  
+
+                        <div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">Age</i></span>
+							</div>
+							<input type="text" name="age" placeholder="age" class="form-control">
+						</div>
+
+                        <div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">sex</i></span>
+							</div>
+                            <select name="sex" id="" class="form-control">
+                                <option value="male" class="form-control">Male</option>
+                                <option value="Female" class="form-control">Female</option>
+                            </select>
+
+							
+						</div>
+
+						
+
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<Button class="btn login_btn" type="submit">Sign in</Button>
+				 				<Button class="btn login_btn" type="submit">Create User</Button>
 				   			</div>
 					</form>
 
