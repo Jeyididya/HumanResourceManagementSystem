@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+
+
+            <h3 id="form-title">LOGIN</h3>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+            <form method="POST" action="/register">
+                {%csrf_token%}
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">User Name</i></span>
+                    </div>
+                    <input type="text" name="username" value="{{username}}" placeholder="username" class="form-control">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">First Name</i></span>
+                    </div>
+                    <input type="text" name="firstname" value="{{firstname}}" placeholder="first name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">Last Name</i></span>
+                    </div>
+                    <input type="text" name="lastname" value="{{lastname}}" placeholder="last name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">Email</i></span>
+                    </div>
+                    <input type="text" name="email" value="{{email}}" placeholder="example@something.com" class="form-control">
+                </div>  
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">Salary</i></span>
+                    </div>
+                    <input type="text" name="salary" value="{{salary}}" placeholder="salary" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">Age</i></span>
+                    </div>
+                    <input type="text" name="age" value="{{age}}" placeholder="age" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">Password</i></span>
+                    </div>
+                    <input type="text" name="password" value="{{password}}" placeholder="age" class="form-control">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user">sex</i></span>
+                    </div>
+                    
+                    <select name="sex" id="" class="form-control" value="{{sex}}">
+                        <option value="male" class="form-control">Male</option>
+                        <option value="Female" class="form-control">Female</option>
+                    </select>
+
+                    
+                </div>
+
+                
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                         <Button class="btn login_btn" type="submit">Create User</Button>
+                       </div>
+            </form>
+
+        </div>
+
+        
+    
+        </div>
+    </div>
+</div>

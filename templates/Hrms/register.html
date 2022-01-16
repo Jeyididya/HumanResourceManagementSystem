@@ -83,7 +83,19 @@
 <body>
     <p>im working</p>
 
+
+
+
     <div class="container h-100">
+{% if messages%}
+{% for message in messages%}
+<div class="alert alert-warning alert-dismissible fase show" role="alert">
+	{{message}}
+	<button type="button" class="close" data-dismiss="alert" aria-lable="close"><span aria-hidden="true">&times;</span></button>
+
+</div>
+{% endfor %}
+{% endif %}
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
@@ -96,37 +108,59 @@
                         {%csrf_token%}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">User Name</i></span>
+							</div>
+							<input type="text" name="username" value="{{username}}" placeholder="username" class="form-control">
+						</div>
+						
+						<div class="input-group mb-3">
+							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user">First Name</i></span>
 							</div>
-							<input type="text" name="firstname" placeholder="first name" class="form-control">
+							<input type="text" name="firstname" value="{{firstname}}" placeholder="first name" class="form-control">
 						</div>
 
                         <div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user">Last Name</i></span>
 							</div>
-							<input type="text" name="lastname" placeholder="last name" class="form-control">
+							<input type="text" name="lastname" value="{{lastname}}" placeholder="last name" class="form-control">
 						</div>
 
                         <div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user">Email</i></span>
 							</div>
-							<input type="text" name="email" placeholder="example@something.com" class="form-control">
+							<input type="text" name="email" value="{{email}}" placeholder="example@something.com" class="form-control">
 						</div>  
+
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">Salary</i></span>
+							</div>
+							<input type="text" name="salary" value="{{salary}}" placeholder="salary" class="form-control">
+						</div>
 
                         <div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user">Age</i></span>
 							</div>
-							<input type="text" name="age" placeholder="age" class="form-control">
+							<input type="text" name="age" value="{{age}}" placeholder="age" class="form-control">
 						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user">Password</i></span>
+							</div>
+							<input type="text" name="password" value="{{password}}" placeholder="age" class="form-control">
+						</div>
+
 
                         <div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user">sex</i></span>
 							</div>
-                            <select name="sex" id="" class="form-control">
+							
+                            <select name="sex" id="" class="form-control" value="{{sex}}">
                                 <option value="male" class="form-control">Male</option>
                                 <option value="Female" class="form-control">Female</option>
                             </select>
