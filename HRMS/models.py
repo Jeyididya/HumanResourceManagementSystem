@@ -22,7 +22,10 @@ class Attendance(models.Model):
     dat=models.CharField(max_length=100)
     pday = models.DateTimeField(default=timezone.now)
 
-  
+
+
+
 class Salary(models.Model):
     username=models.CharField(max_length=100)
+    paidamount=models.FloatField()
     paidmonth=models.CharField(max_length=100)

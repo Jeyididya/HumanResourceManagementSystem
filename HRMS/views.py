@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from .models import Employee, Attendance
 from .forms import EmployeeForm, AttendanceForm
 from datetime import date
+from Hrms.models import Salary
 
 
 atte=[] #to check for duplicated attendance
@@ -104,6 +105,14 @@ def adminpage(request):
     return render (request,'Hrms/adminpage.html')
 def userspage(request):
     return render (request,'Hrms/userspage.html')
+
+def viewsalary(request):
+    salarys = Salary.objects.all
+    stu = {
+        "dat": salarys
+    }
+    return render (request,'Hrms/viewsalary.html',stu)
+
 def salary(request):
     if request.method=="POST": 
         given_month=request.POST['month']
@@ -112,11 +121,10 @@ def salary(request):
         
         for emp in Employee.objects.all():
             all_sal[emp.username]=emp.salary
-        print(all_sal,"====---000000000")
+        #print(all_sal,"====---000000000")
         all_={}
         
-        
-        print("##########################################")
+        #print("##########################################")
         for em in Attendance.objects.all():
             i=em.dat.split("+")
             name=i[0]
@@ -129,16 +137,27 @@ def salary(request):
                     all_[name]=all_[name]+1
                 else:
                     all_[name]=1
-        print(all_)
+       # print(all_)
+        print("/\/\/\\\//\/\/\/\\/\/\/\/\/\/\/\/\/\/\1")
+        for i in all_sal:
+            try:
+                    
+                if all_[i]>22:
+                    sa=all_sal[i]+(all_sal[i]/30)*(all_[i]-22)*ot
+                else:
+                    sa=(all_sal[i]/30)*all_[i]
+                print('00000000000000000000000000000')
+                print(i,"has",all_sal[i]," worked",all_[i])
+                a=Salary(username=i,paidmonth=given_month,paidamount="%.2f" % sa)
+                a.save()
+            except:
+                pass
             
-
-        print("##########################################")
-        
-        
-        
-   
-    
+        print("\/\/\\\//\/\/\/\\/\/\/\/\/\/\/\/\/\/\1")
+        #print("##########################################")
     return render (request,'Hrms/salary.html')
+
+
 def viewemployees(request):
     data = Employee.objects.all
     stu = {
@@ -178,7 +197,7 @@ def confirmattendance(request):
                 messages.success(request,"attendance taken!!")
                 return redirect("userspage")
         else:
-            print(str(form1.errors),)
+            print(str(form1.errors))
             if("Attendance" in str(form1.errors)):
                 messages.success(request,"attendance already taken!!")
             return redirect("userspage")
